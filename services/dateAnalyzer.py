@@ -22,9 +22,14 @@ def date_analyzer(line):
     p = pdt.Calendar(c)
     result = p.parse(line)
 
-    return result
     year, month, day, hour, mins, secs = result[0][:6]
     UTS = result[1]
 
+    if UTS == 0:
+        return None
+    else:
+        return result
+
+
 if __name__ == '__main__':
-    print(date_analyzer("i want to eat next week at 12 pm and today"))
+    print(date_analyzer("hi omer there Jerusalem in a minute"))

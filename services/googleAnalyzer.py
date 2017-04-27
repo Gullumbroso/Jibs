@@ -9,8 +9,7 @@ def google_analyzer(line):
     document = language_client.document_from_text(line)
     annotations = document.annotate_text(include_sentiment=False)
 
-
-    ### ACTION:
+    # ACTION & TRIGGERS:
     num_words = len(annotations.tokens)
     edges = [[] for i in range(num_words)]
 
@@ -36,21 +35,21 @@ def google_analyzer(line):
         # print('         lemma : %s' % (token.lemma ,))
         # print("=========================================================")
 
-        if token.text_content in ["when"]:
-            triggers.append(line[token.text_begin:])
 
-
-    # print(actions)
 
     # PLACE
     places = []
+    persons = []
+    events = []
     for entity in annotations.entities:
-        if entity.entity_type == "LOCATION":
+        if entity.entity_type in ["ORGANIZATION", "LOCATION"]:
             places.append(entity.name)
+        elif entity.entity_type in ["PERSON"]:
+            persons.append(entity.name)
+        elif entity.entity_type in ["EVENT"]:
+            events.append(entity.name)
 
-    # print(places)
-
-    return actions, triggers, places
+    return actions, triggers, places, persons, events
 
 
 if __name__ == '__main__':

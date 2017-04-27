@@ -1,28 +1,18 @@
 import services.dateAnalyzer as da
+import services.googleAnalyzer as ga
 
 
+def line_analyzer(line):
+    actions, triggers, places = ga.google_analyzer(line)
+    date = da.date_analyzer(line)
+
+    print("Actions: ", actions)
+    print("Triggers: ", triggers)
+    print("Places: ", places)
+    print("Time: ", date)
 
 
-def line_anayzer(line):
-
-
-
-    da.time_analyzer()
-
-
-
-# Imports the Google Cloud client library
-from google.cloud import language
-
-# Instantiates a client
-language_client = language.Client()
-
-# The text to analyze
-text = 'Hello, world!'
-document = language_client.document_from_text(text)
-
-# Detects the sentiment of the text
-sentiment = document.analyze_sentiment().sentiment
-
-print('Text: {}'.format(text))
-print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
+if __name__ == '__main__':
+    text = "I want to send a mail to friends when i'm in Jerusalem"
+    text = "hi"
+    line_analyzer(text)

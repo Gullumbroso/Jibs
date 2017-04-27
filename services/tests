@@ -1,0 +1,41 @@
+# # Imports the Google Cloud client library
+# from google.cloud import language
+#
+# # Instantiates a client
+# language_client = language.Client()
+#
+# # The text to analyze
+# # text = 'i want to eat next week at 12 pm and today'
+# # document = language_client.document_from_text(text)
+#
+# # Detects the sentiment of the text
+# # sentiment = document.analyze_sentiment().sentiment
+#
+# # print('Text: {}'.format(text))
+# # print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
+#
+# text_content = 'i want to eat next week at 12 pm and today in Jerusalem Google'
+# document = language_client.document_from_text(text_content)
+# annotations = document.annotate_text(include_sentiment=False)
+# # Sentences present if include_syntax=True
+# print(annotations.sentences)
+# # ['The cow jumped over the Moon.']
+# # Tokens present if include_syntax=True
+# for token in annotations.tokens:
+#     msg = '%11s: %s' % (token.part_of_speech, token.text_content)
+#     print(msg)
+#
+# # Entities present if include_entities=True
+# places = []
+# for entity in annotations.entities:
+#     if entity.entity_type == "LOCATION":
+#         places.append(entity.name)
+#
+#     print('         name: %s' % (entity.name,))
+#     print('         type: %s' % (entity.entity_type,))
+#     print('     metadata: %s' % (entity.metadata,))
+#     print('     salience: %s' % (entity.salience,))
+
+
+test = [[]]*6
+print(test)

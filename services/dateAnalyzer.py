@@ -16,7 +16,7 @@ limitations under the License.
 import parsedatetime as pdt
 
 
-def time_analyzer(line):
+def date_analyzer(line):
     c = pdt.Constants()
     c.BirthdayEpoch = 60
     p = pdt.Calendar(c)
@@ -26,4 +26,5 @@ def time_analyzer(line):
     year, month, day, hour, mins, secs = result[0][:6]
     UTS = result[1]
 
-print(time_analyzer("i want to eat next week at 12 pm and today"))
+if __name__ == '__main__':
+    print(date_analyzer("i want to eat next week at 12 pm and today"))

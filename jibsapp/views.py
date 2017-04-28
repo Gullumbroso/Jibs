@@ -4,7 +4,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 import services as services
 
-class WhatToDo(APIView):
+class FirstAnswer(APIView):
     def get(self, request):
         # Prepare the graph
         params = request.query_params

@@ -3,11 +3,10 @@ from services.sessions.Session import Session
 
 class Mail(Session):
     def __init__(self, trigger=None, persons=None, time=None):
-        Session.__init__(self, trigger, persons)
+        Session.__init__(self, "mail", trigger, persons)
         self.time = time
         self.subject = ""
         self.body = ""
-        self.attachments = []
 
     def add_to_subject(self, text):
         self.subject += text
@@ -18,24 +17,41 @@ class Mail(Session):
     def set_time(self, time):
         self.time = time
 
-    def what_missing(self):
-        json = {}
-        if self.time is None:
-            json["time"] = {"Missing": True, "Mandatory": False}
-        else:
-            json["time"] = {"Missing": False, "Mandatory": False}
+    def has_time(self):
+        return self.time is not None
 
-        if self.subject == "":
-            json["subject"] = {"Missing": True, "Mandatory": True}
-        else:
-            json["subject"] = {"Missing": False, "Mandatory": True}
+    def has_subject(self):
+        return bool(self.subject)
 
-        if self.body == "":
-            json["body"] = {"Missing": True, "Mandatory": True}
-        else:
-            json["body"] = {"Missing": False, "Mandatory": True}
+    def has_body(self):
+        return bool(self.body)
 
-        if len(self.persons) == 0:
-            json["persons"] = {"Missing": True, "Mandatory": True}
-        else:
-            json["persons"] = {"Missing": False, "Mandatory": True}
+    def whats_next(self):
+        if not self.has_subject():
+            return "subject"
+
+        if not self.has_body():
+            return "body"
+
+        if not self.has_persons():
+            return "persons"
+
+        if not self.has_time():
+            return "time"
+
+        return None
+
+    def is_mandatory_done(self):
+        return self.has_persons() and self.has_subjectt() and self.has_body
+
+    def data_I_know(self):
+        if self.persons:
+            data["persons"] = self.persons
+        if self.subject:
+            data["subject"] = self.subject
+        if self.body:
+            data["body"] = self.body
+        if self.time:
+            data["time"] = self.time
+
+        return data

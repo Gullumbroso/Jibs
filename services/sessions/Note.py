@@ -3,7 +3,7 @@ from services.sessions.Session import Session
 
 class Note(Session):
     def __init__(self, trigger=None, persons=None):
-        Session.__init__(self, trigger, persons)
+        Session.__init__(self, "note", trigger, persons)
         self.subject = ""
         self.body = ""
 

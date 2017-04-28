@@ -3,7 +3,7 @@ from services.sessions.Session import Session
 
 class Reminder(Session):
     def __init__(self, trigger=None, persons=None, time=None):
-        Session.__init__(self, trigger, persons)
+        Session.__init__(self, "reminder", trigger, persons)
         self.text = ""
         self.time = time
 

@@ -15,7 +15,9 @@ class WhatToDo(APIView):
             session = services.lineAnalyzer.line_analyzer(first_answer)
 
             response = {
-                'session': session,
+                'type': session.stype,
+                'data': session.data_I_know(),
+                'is_done': session.is_mandatory_done()
             }
 
             return Response(response, status=status.HTTP_200_OK)

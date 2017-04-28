@@ -3,7 +3,7 @@ from services.sessions.Session import Session, Triggers
 
 class Event(Session):
     def __init__(self, trigger=Triggers.NONE, persons=None, place=None, time=None, title=None, color=None):
-        Session.__init__(self, trigger, persons)
+        Session.__init__(self, "event", trigger, persons)
         self.title = title
         self.place = place
         self.time = time

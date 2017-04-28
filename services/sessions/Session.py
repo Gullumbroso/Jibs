@@ -9,9 +9,9 @@ class Triggers(Enum):
     NOW = 4
 
 
-
 class Session:
-    def __init__(self, trigger, persons):
+    def __init__(self, stype, trigger, persons):
+        self.stype = stype
         self.trigger = trigger
 
         if persons is None:
@@ -24,3 +24,6 @@ class Session:
 
     def set_trigger(self, trigger):
         self.trigger = trigger
+
+    def has_persons(self):
+        return bool(self.persons)

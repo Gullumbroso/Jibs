@@ -13,3 +13,4 @@ google-cloud-language==0.24.1
 googleapis-common-protos==1.5.2
 parsedatetime==2.3
 whitenoise==3.3.0
+services

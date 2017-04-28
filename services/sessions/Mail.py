@@ -45,6 +45,7 @@ class Mail(Session):
         return self.has_persons() and self.has_subjectt() and self.has_body
 
     def data_I_know(self):
+        data = {}
         if self.persons:
             data["persons"] = self.persons
         if self.subject:

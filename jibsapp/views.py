@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 import services as services
+from services.lineAnalyzer import *
 
 class FirstAnswer(APIView):
     def get(self, request):
@@ -11,8 +12,8 @@ class FirstAnswer(APIView):
         if len(params) != 1:
             return Response("Please enter a url to parse.", status=status.HTTP_204_NO_CONTENT)
         else:
-            first_answer = params['firstAnswer']
-            session = services.lineAnalyzer.line_analyzer(first_answer)
+            first_answer = params['firstQuestion']
+            session = line_analyzer(first_answer)
 
             response = {
                 'type': session.stype,

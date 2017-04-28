@@ -14,13 +14,8 @@ class WhatToDo(APIView):
             first_answer = params['firstAnswer']
             session = services.lineAnalyzer.line_analyzer(first_answer)
 
-
-
             response = {
-                'article_title': article_title,
-                'article_content': article_content,
-                'prediction': prediction,
-                'confidence': score
+                'session': session,
             }
 
             return Response(response, status=status.HTTP_200_OK)

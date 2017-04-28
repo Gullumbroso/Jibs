@@ -64,7 +64,7 @@ def line_analyzer(line):
     if action == Actions.NOTE:
         return Note(Triggers.NOW, persons)
 
-    print("ERRORRRRRRRRRRRRRR")
+    return None
     # print("Actions: ", actions)
     # print("Actions: ", actions[:,1])
     #
@@ -79,4 +79,4 @@ if __name__ == '__main__':
     text = "create an event when i receive an e-mail"
     # text = "send a mail to me"
     ses = line_analyzer(text)
-    print("end")
+

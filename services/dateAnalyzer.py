@@ -32,4 +32,4 @@ def date_analyzer(line):
 
 
 if __name__ == '__main__':
-    print(date_analyzer("hi omer there Jerusalem in a minute"))
+    print(date_analyzer("18 october 1980"))

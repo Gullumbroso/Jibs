@@ -13,7 +13,6 @@ class Triggers(Enum):
 class Session:
     def __init__(self, trigger, persons):
         self.trigger = trigger
-        self.is_ready = False
 
         if persons is None:
             self.persons = []

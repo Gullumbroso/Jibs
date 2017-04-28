@@ -20,5 +20,6 @@ router = routers.DefaultRouter()
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^first_answer/$', views.FirstAnswer.as_view())
+    url(r'^first_answer/$', views.FirstAnswer.as_view()),
+    url(r'^update_data/$', views.updateData.as_view())
 ]

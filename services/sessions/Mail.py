@@ -18,3 +18,24 @@ class Mail(Session):
     def set_time(self, time):
         self.time = time
 
+    def what_missing(self):
+        json = {}
+        if self.time is None:
+            json["time"] = {"Missing": True, "Mandatory": False}
+        else:
+            json["time"] = {"Missing": False, "Mandatory": False}
+
+        if self.subject == "":
+            json["subject"] = {"Missing": True, "Mandatory": True}
+        else:
+            json["subject"] = {"Missing": False, "Mandatory": True}
+
+        if self.body == "":
+            json["body"] = {"Missing": True, "Mandatory": True}
+        else:
+            json["body"] = {"Missing": False, "Mandatory": True}
+
+        if len(self.persons) == 0:
+            json["persons"] = {"Missing": True, "Mandatory": True}
+        else:
+            json["persons"] = {"Missing": False, "Mandatory": True}

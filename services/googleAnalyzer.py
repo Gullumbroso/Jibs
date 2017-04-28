@@ -1,5 +1,12 @@
 # Imports the Google Cloud client library
 from google.cloud import language
+from oauth2client.client import GoogleCredentials
+from googleapiclient.discovery import build
+
+credentials = GoogleCredentials.get_application_default()
+
+service = build('compute', 'v1', credentials=credentials)
+
 
 # Instantiates a client
 language_client = language.Client()
